@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="assets/style/main.css">
+    <title>Inspire</title>
+</head>
+<header class="container-fluid">
+    <div class="row" id="weather"></div>
+</header>
+
+<body class="bg-main">
+    <main class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center clock" id="clock">
+                <script type="text/javascript">
+                    setInterval(time, 500);
+                    function time() {
+                        let date = new Date()
+                        let h = date.getHours();
+                        let m = date.getMinutes();
+                        let s = date.getSeconds();
+
+                        if (h > 12) {
+                            h = h - 12;
+                        }
+                        if (h == 0) {
+                            h = 12;
+                        }
+                        if (m < 10) {
+                            m = '0' + m;
+                        }
+                        if (s < 10) {
+                            s = '0' + s;
+                        }
+                        let time = h + ":" + m + ":" + s;
+                        document.getElementById("clock").innerHTML = time;
+
+                    }
+                </script>
+            </div>
+        </div>
+
+
+    </main>
+
+
+    <footer class="container-fluid">
+        <div class="row mb-4">
+
+            <div class="col-5 text-white" id="quote">
+
+            </div>
+
+            <div class="col-2 text-right">
+                <!-- Button trigger modal -->
+                <button id="tdButton" type="button" class="btn btn-todo" data-toggle="modal"
+                    data-target="#new-task-modal" onsubmit="app.todoController.getTodos()">
+                    To-Do
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="new-task-modal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="">To-Do's</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="todos">
+                                <!-- Checkboxes HERE -->
+                            </div>
+                            <div class="modal-footer">
+                                <form onsubmit="app.todoController.addTodo(event)">
+                                    <input type="text" placeholder="Add Task" id="description">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="app/main.js" type="module"></script>
+
+
+
+</body>
+
+</html>
