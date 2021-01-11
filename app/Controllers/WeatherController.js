@@ -25,9 +25,6 @@ function _drawChange() {
 
 }
 
-
-
-
 export default class WeatherController {
   constructor() {
     ProxyState.on("weather", drawWeather);
