@@ -43,10 +43,10 @@ export default class WeatherController {
   changeWeather() {
     try {
       weatherService.changeWeather()
+      _drawChange()
     }
     catch (error) {
       console.error(error)
     }
-    _drawChange()
   }
 }
